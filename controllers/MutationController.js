@@ -1,12 +1,18 @@
-function hasMutation(DNA) {
-    // Validate DNA
-    // If DNA is not valid return a message that say: El DNA no es valido 
-    if(!isDNAValid(DNA)) return 'El DNA no es valido';
+'use strict'
+function mutation(req, res) {
+    if(hasMutation(req.DNA)) {
+        res.status(200).json({mutation: true});
 
+    } else {
+        res.status(403).json({mutation: false});        
+    }
+
+}
+
+function hasMutation(DNA) {
     // Prepare DNA for to Search
     let DNAReady = prepareForTheSearch(DNA);
-    console.log(DNAReady);
-    
+
     const REGULAR_EXPRESION = /GGGG|CCCC|AAAA|TTTT/;
     let mutations = [];
 
@@ -32,7 +38,7 @@ function hasMutation(DNA) {
     );
 
 
-    // Checkn that there are mutation and add to mutations
+   // Check that there are mutation and add to mutations
     if(horizontal.length > 0){
         mutations = mutations.concat(horizontal);   
     }
@@ -45,34 +51,18 @@ function hasMutation(DNA) {
     if(obliqueReverse.length > 0){
         mutations = mutations.concat(obliqueReverse);
     }
-    console.log('Mutations: ', mutations);
 
     /// Check that mutation be greater than 2
     if(mutations.length > 1) return true;
-    return false;
+    return false
 }
 
-function isDNAValid(DNA) {
-    const REGULAR_EXPRESION = /[^ATCG]/;
-    let isValid = true;
-    
-    DNA.forEach(row => {
-        // If DNA has diferent letters to ATCG then it is not valid
-        if(REGULAR_EXPRESION.test(row)) {
-           // console.log('Error', row);
-            isValid = false;
-        }
-    });
-
-    return isValid;
-}
-
-// Prepare DNA for to search horizontally, vertically and oblique 
-function prepareForTheSearch(DNA) {
+// Prepare ADN for to search horizontally, vertically and oblique 
+function prepareForTheSearch(ADN) {
     let vertical = [], oblique = [], obliqueReverse = [];
 
     // Go through the array for rows
-    DNA.map((row, idx) => {
+    ADN.map((row, idx) => {
 
         // Separate the row by letters to go through them individually
         row.split('').map((column, index) => {
@@ -109,21 +99,12 @@ function prepareForTheSearch(DNA) {
 
     });
 
-
     return {
-        horizontal: DNA,
+        horizontal: ADN,
         vertical,
         oblique,
         obliqueReverse
     }
 }
-/*
-const withMutation = hasMutation(['ATGCGA','CAGTGC','TTATGT','AGAAGG','CCCCTA','TCACTG']);
-console.log(withMutation);
 
-const withoutMutation = hasMutation(["ATGCGA","CAGTGC","TTATTT","AGACGG","GCGTCA","TCACTG"]);
-console.log(withMutation);*/
-
-const withoutMutation = hasMutation(['ATTCGA','ATTCGA','GCATGA','CCGGAA','ACGGCA','GCTACG','TCACTG']);
-console.log(withoutMutation);
-
+module.exports = {mutation}
