@@ -6,7 +6,7 @@ First you need clone the repository and use the master branch
 
 	git clone https://github.com/FranciscoGustavo/DNA.git
 	git checkout levelthree
-Now run the the following command:
+Now run the following command:
 
 	npm install
 
