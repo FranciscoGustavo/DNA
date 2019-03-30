@@ -5,7 +5,7 @@ function hasMutation(DNA) {
 
     // Prepare DNA for to Search
     let DNAReady = prepareForTheSearch(DNA);
-    console.log(DNAReady);
+   // console.log(DNAReady);
     
     const REGULAR_EXPRESION = /GGGG|CCCC|AAAA|TTTT/;
     let mutations = [];
@@ -117,13 +117,10 @@ function prepareForTheSearch(DNA) {
         obliqueReverse
     }
 }
-/*
-const withMutation = hasMutation(['ATGCGA','CAGTGC','TTATGT','AGAAGG','CCCCTA','TCACTG']);
-console.log(withMutation);
 
-const withoutMutation = hasMutation(["ATGCGA","CAGTGC","TTATTT","AGACGG","GCGTCA","TCACTG"]);
-console.log(withMutation);*/
+const mutation = hasMutation(['ATGCGA','CAGTGC','TTATGT','AGAAGG','CCCCTA','TCACTG']);
+console.log('with: ', mutation);
 
-const withoutMutation = hasMutation(['ATTCGA','ATTCGA','GCATGA','CCGGAA','ACGGCA','GCTACG','TCACTG']);
-console.log(withoutMutation);
+const mutationTwo = hasMutation(['ATGCGA','CAGTGC','TTATTT','AGACGG','GCGTCA','TCACTG']);
+console.log('without: ',mutationTwo);
 
