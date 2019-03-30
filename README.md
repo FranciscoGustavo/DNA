@@ -16,7 +16,7 @@ Validate that the DNA only has the following words **ATCG**
 Order the DNA in four directions, horizontal, vertical, oblique and reverse oblique
 	
 #### Oblique
-	[ 'A', 'TC', 'GAT', 'CGTA', 'GTAGG', 'AGTACT', 'CTCGC', 'TGTA', 'GCC', 'AT', 'G' ],
+	[ 'A', 'TC', 'GAT', 'CGTA', 'GTAGG', 'AGTACT', 'CTCGC', 'TGTA', 'GCC', 'AT', 'G' ]
 ![De forma diagonal](https://raw.githubusercontent.com/FranciscoGustavo/DNA/master/oblicua.PNG)
 #### Oblique Reverse
 	['A','GC','CGT','GTGG','TGTGA','AAAATG','CTACT','TGCC','ACA','CC','T' ]	
